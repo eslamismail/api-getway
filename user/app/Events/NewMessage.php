@@ -33,7 +33,6 @@ class NewMessage implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        file_put_contents('test.text', json_encode($this->message));
-        return new PrivateChannel('new_message.' . $this->userId, $this->message);
+        return new PrivateChannel('room.' . $this->message->room_id, ($this->message));
     }
 }

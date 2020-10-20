@@ -30,6 +30,15 @@ class UserController extends Controller
     }
     public function user(Request $request)
     {
+        $user = auth()->user();
+        $data = [
+            'user' => $user,
+        ];
+        return response()->json($data, 200);
+    }
+
+    public function register(Request $request)
+    {
         $request->validate([
             'email' => 'required|email|unique:users,email',
             'name' => 'required|string|min:2|max:255',

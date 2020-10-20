@@ -56,7 +56,7 @@ class MessageController extends Controller
 
         // return json_decode($members);
         foreach (json_decode($members) as $key => $member) {
-            broadcast(new NewMessage($members[$key]['user_id'], $message));
+            broadcast(new NewMessage($members[$key]['user_id'], json_decode($message)));
         }
     }
 
